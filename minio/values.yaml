@@ -1,0 +1,18 @@
+replicas: 3
+persistence:
+  enabled: true
+  existingClaim: "minio-pvc"
+  storageClass: "standard"
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  mountPath: /data
+resources:
+  requests:
+    memory: 512Mi
+service:
+  type: ClusterIP
+defaultBuckets: "starrocks"
+users:
+  - accessKey: starrocks_access_key
+    secretKey: starrocks_secret_key
+    policy: consoleAdmin

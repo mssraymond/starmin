@@ -1,0 +1,22 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+    - containerPort: 9030   # FE query port
+      hostPort: 9030
+      protocol: TCP
+    - containerPort: 30030   # FE proxy (stream load) port
+      hostPort: 30030
+      protocol: TCP
+  extraMounts:
+    - hostPath: ./data
+      containerPath: /data
+    - hostPath: ./meta
+      containerPath: /meta
+- role: worker
+  extraMounts:
+    - hostPath: ./data
+      containerPath: /data
+    - hostPath: ./meta
+      containerPath: /meta

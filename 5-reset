@@ -1,0 +1,6 @@
+#!/bin/bash
+
+rm -rf csvs
+rm -rf data
+rm -rf meta
+: > log.txt

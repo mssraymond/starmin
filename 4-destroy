@@ -1,0 +1,6 @@
+#!/bin/bash
+
+helm uninstall starrocks -n warehouse
+helm uninstall minio -n warehouse
+kind delete cluster
+ps aux | grep port-forward | grep -o -E '\s\d+\s' | xargs kill >> log.txt 2>&1
