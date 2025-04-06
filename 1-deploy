@@ -25,7 +25,8 @@ helm install starrocks starrocks/kube-starrocks -f starrocks/values.yaml --names
 
 helm repo add authentik https://charts.goauthentik.io
 helm repo update
-helm upgrade --install authentik authentik/authentik -f authentik/values.yaml --version 2025.2.2
+helm upgrade --install authentik authentik/authentik -f authentik/values.yaml --version 2025.2.2 --wait
+kubectl exec -it deployment/authentik-worker -c worker -- ak create_recovery_key 10 akadmin  # Admin backdoor
 
 ### HANDY COMMANDS ###
 # helm uninstall starrocks -n warehouse

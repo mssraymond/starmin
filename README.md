@@ -14,7 +14,8 @@
 5. Run `kubectl exec --stdin --tty service/kube-starrocks-fe-service -- mysql -P9030 -h127.0.0.1 -u root --prompt="StarRocks > "` and then copy/paste and run all the commands in [queries.sql](scripts/queries.sql).
 6. To ingest data, run `./scripts/curls.sh`.
 7. Peruse through your tables by querying `crashdata` and `weatherdata`. You can even following along this [analysis exercise](https://docs.starrocks.io/docs/quick_start/helm/#answer-some-questions).
-8. `./4-destroy`: Undeploy all resources.
-9. `./5-reset`: Remove all extraneous directories and files.
+8. Access Authentik admin console via `localhost:8081/<ADMIN_BACKDOOR>`.
+9. `./4-destroy`: Undeploy all resources.
+10. `./5-reset`: Remove all extraneous directories and files.
 
 ***Enjoy!*** 🤗
