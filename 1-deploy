@@ -23,6 +23,11 @@ helm repo add starrocks https://starrocks.github.io/starrocks-kubernetes-operato
 helm repo update
 helm install starrocks starrocks/kube-starrocks -f starrocks/values.yaml --namespace warehouse --wait
 
+helm repo add authentik https://charts.goauthentik.io
+helm repo update
+helm upgrade --install authentik authentik/authentik -f authentik/values.yaml --version 2025.2.2 --wait
+kubectl exec -it deployment/authentik-worker -c worker -- ak create_recovery_key 10 akadmin  # Admin backdoor
+
 ### HANDY COMMANDS ###
 # helm uninstall starrocks -n warehouse
 # kubectl exec --stdin --tty service/kube-starrocks-fe-service -- mysql -P9030 -h127.0.0.1 -u root --prompt="StarRocks > "
