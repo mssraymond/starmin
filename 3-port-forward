@@ -1,5 +1,6 @@
 #!/bin/bash
 
+kubectl port-forward service/minio 9000:9000 >> log.txt 2>&1 & \
 kubectl port-forward service/minio-console 9001:9001 >> log.txt 2>&1 & \
 kubectl port-forward service/kube-starrocks-fe-proxy-service 8080:8080 >> log.txt 2>&1 & \
 kubectl port-forward service/authentik-server 8081:80 >> log.txt 2>&1 &
